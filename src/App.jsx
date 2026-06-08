@@ -150,7 +150,7 @@ export default function App() {
               <span className="text-slate-400 font-normal text-lg">Replay</span>
             </h1>
             <p className="text-slate-500 text-sm mt-1">
-              Sintel — Official Trailer · Blender Foundation · Open Movie
+              Monkey Documentary Roast — 875 live comments
             </p>
           </div>
 
@@ -164,7 +164,7 @@ export default function App() {
           >
             <video
               ref={videoRef}
-              src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+              src="/monkey.mp4"
               crossOrigin="anonymous"
               className="w-full h-full object-contain"
               onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime ?? 0)}
