@@ -33,6 +33,19 @@ const MOCK_COMMENTS_JSON = [
   { id: "20", time: 62, username: "VFXStudent",       userColor: "#FFD700", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=VFXStudent",       text: "Studying this frame-by-frame for my uni project" },
 ];
 
+// ─── Narrator script ──────────────────────────────────────────────────────────
+const NARRATOR_LINES = [
+  { start:  0, end:  5, text: "Gathered within a small social cluster, several members of the troop engage in routine interaction while a dominant male focuses on replenishing his energy reserves." },
+  { start:  5, end: 10, text: "The younger offspring remain close to their caretakers, protected by a network of maternal supervision that has evolved over countless generations." },
+  { start: 10, end: 15, text: "One female without dependent offspring approaches the group, apparently displaying an interest in the well-being of the younger members." },
+  { start: 15, end: 20, text: "Among many primate species, such interactions provide opportunities for social learning and help strengthen bonds within the troop." },
+  { start: 20, end: 25, text: "Not all mothers participate equally. One female chooses to remain somewhat detached from the central gathering, maintaining a cautious distance." },
+  { start: 25, end: 30, text: "The younger monkeys continue to attract considerable attention, illustrating their importance to the long-term success of the group." },
+  { start: 30, end: 35, text: "The dominant male remains remarkably focused despite the increasing social activity occurring around him." },
+  { start: 35, end: 40, text: "Although minor disagreements occasionally emerge, such interactions are a normal component of troop life and rarely disrupt overall stability." },
+  { start: 40, end: 44, text: "As the encounter draws to a close, the group gradually settles into a more balanced state, demonstrating the resilience of highly social primates." },
+];
+
 const formatTime = (seconds) => {
   if (!seconds || isNaN(seconds)) return "0:00";
   const m = Math.floor(seconds / 60);
@@ -54,6 +67,10 @@ export default function App() {
   const [showChat,        setShowChat]        = useState(true);
   const [showControls,    setShowControls]    = useState(true);
   const [userInput,       setUserInput]       = useState("");
+
+  const narratorLine = NARRATOR_LINES.find(
+    (l) => currentTime >= l.start && currentTime < l.end
+  ) ?? null;
 
   // Fetch comments; fall back to mock on any error
   useEffect(() => {
@@ -150,7 +167,7 @@ export default function App() {
               <span className="text-slate-400 font-normal text-lg">Replay</span>
             </h1>
             <p className="text-slate-500 text-sm mt-1">
-              Monkey Documentary Roast — 875 live comments
+              Monkey Documentary Roast — 40 live comments
             </p>
           </div>
 
@@ -179,6 +196,22 @@ export default function App() {
                 <div className="bg-black/50 backdrop-blur-sm rounded-full p-5 ring-1 ring-white/20 shadow-2xl">
                   <Play className="w-10 h-10 text-white fill-white" />
                 </div>
+              </div>
+            )}
+
+            {/* Narrator subtitle */}
+            {narratorLine && (
+              <div className="absolute bottom-[30%] left-0 right-0 flex justify-center px-6 pointer-events-none">
+                <p
+                  className="text-center text-white text-sm sm:text-base leading-relaxed tracking-wide max-w-2xl"
+                  style={{
+                    fontFamily: "'Georgia', 'Times New Roman', serif",
+                    textShadow: "0 1px 8px rgba(0,0,0,0.95), 0 0 24px rgba(0,0,0,0.8)",
+                    fontStyle: "italic",
+                  }}
+                >
+                  {narratorLine.text}
+                </p>
               </div>
             )}
 
