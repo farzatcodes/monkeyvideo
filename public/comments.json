@@ -1,0 +1,22 @@
+[
+  { "id": "1",  "time": 2,  "username": "DragonSlayer99",  "userColor": "#FF6B6B", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DragonSlayer99",  "text": "This is so epic! 🔥" },
+  { "id": "2",  "time": 4,  "username": "CodeWizard",       "userColor": "#4ECDC4", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeWizard",       "text": "The animation here is incredible" },
+  { "id": "3",  "time": 6,  "username": "PixelHunter",      "userColor": "#45B7D1", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=PixelHunter",      "text": "I've watched this like 50 times already lol" },
+  { "id": "4",  "time": 8,  "username": "StarGazer",        "userColor": "#FFA500", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=StarGazer",        "text": "The music sync is absolutely perfect ✨" },
+  { "id": "5",  "time": 10, "username": "NightOwl",         "userColor": "#9B59B6", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=NightOwl",         "text": "Sintel honestly deserves a full sequel" },
+  { "id": "6",  "time": 12, "username": "TechNerd42",       "userColor": "#2ECC71", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=TechNerd42",       "text": "This scene gave me chills the first time" },
+  { "id": "7",  "time": 15, "username": "ArtLover",         "userColor": "#E74C3C", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ArtLover",         "text": "Blender Foundation releasing this for free is insane" },
+  { "id": "8",  "time": 18, "username": "FilmBuff",         "userColor": "#F39C12", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FilmBuff",         "text": "The voice acting is surprisingly good" },
+  { "id": "9",  "time": 21, "username": "OpenSourceFan",    "userColor": "#1ABC9C", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=OpenSourceFan",    "text": "ALL MADE WITH OPEN SOURCE TOOLS 🙌" },
+  { "id": "10", "time": 24, "username": "RandomViewer",     "userColor": "#3498DB", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RandomViewer",     "text": "Who else is here from a YouTube rabbit hole?" },
+  { "id": "11", "time": 27, "username": "MovieCritic",      "userColor": "#E91E63", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MovieCritic",      "text": "10/10 story told in under 15 minutes" },
+  { "id": "12", "time": 31, "username": "AnimeFan",         "userColor": "#FF9800", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AnimeFan",         "text": "This hits different every single time" },
+  { "id": "13", "time": 35, "username": "DesignGuru",       "userColor": "#00BCD4", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DesignGuru",       "text": "The color grading in this scene is masterful 🎨" },
+  { "id": "14", "time": 39, "username": "MusicLover",       "userColor": "#8BC34A", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MusicLover",       "text": "Jan Morgenstern's score is absolutely incredible" },
+  { "id": "15", "time": 43, "username": "CasualViewer",     "userColor": "#FF5722", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CasualViewer",     "text": "I don't usually comment but WOW 😭" },
+  { "id": "16", "time": 47, "username": "3DModeler",        "userColor": "#607D8B", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=3DModeler",        "text": "As a Blender user, the cloth sim here is insane" },
+  { "id": "17", "time": 51, "username": "PhilosophyBro",    "userColor": "#9C27B0", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=PhilosophyBro",   "text": "The themes of loss and revenge hit so deep" },
+  { "id": "18", "time": 55, "username": "FirstTimer",       "userColor": "#4CAF50", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FirstTimer",       "text": "First watch ever — this is absolutely beautiful 🥺" },
+  { "id": "19", "time": 58, "username": "NostalgiaBro",     "userColor": "#FF6B9D", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=NostalgiaBro",     "text": "Been watching this since 2010, still perfect" },
+  { "id": "20", "time": 62, "username": "VFXStudent",       "userColor": "#FFD700", "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=VFXStudent",       "text": "Studying this frame-by-frame for my uni project" }
+]
