@@ -9,30 +9,6 @@ import {
   Send,
 } from "lucide-react";
 
-// ─── Fallback data (used when /comments.json returns 404) ─────────────────────
-const MOCK_COMMENTS_JSON = [
-  { id: "1",  time: 2,  username: "DragonSlayer99",  userColor: "#FF6B6B", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=DragonSlayer99",  text: "This is so epic! 🔥" },
-  { id: "2",  time: 4,  username: "CodeWizard",       userColor: "#4ECDC4", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=CodeWizard",       text: "The animation here is incredible" },
-  { id: "3",  time: 6,  username: "PixelHunter",      userColor: "#45B7D1", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=PixelHunter",      text: "I've watched this like 50 times already lol" },
-  { id: "4",  time: 8,  username: "StarGazer",        userColor: "#FFA500", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=StarGazer",        text: "The music sync is absolutely perfect ✨" },
-  { id: "5",  time: 10, username: "NightOwl",         userColor: "#9B59B6", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=NightOwl",         text: "Sintel honestly deserves a full sequel" },
-  { id: "6",  time: 12, username: "TechNerd42",       userColor: "#2ECC71", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=TechNerd42",       text: "This scene gave me chills the first time" },
-  { id: "7",  time: 15, username: "ArtLover",         userColor: "#E74C3C", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ArtLover",         text: "Blender Foundation releasing this for free is insane" },
-  { id: "8",  time: 18, username: "FilmBuff",         userColor: "#F39C12", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=FilmBuff",         text: "The voice acting is surprisingly good" },
-  { id: "9",  time: 21, username: "OpenSourceFan",    userColor: "#1ABC9C", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=OpenSourceFan",    text: "ALL MADE WITH OPEN SOURCE TOOLS 🙌" },
-  { id: "10", time: 24, username: "RandomViewer",     userColor: "#3498DB", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=RandomViewer",     text: "Who else is here from a YouTube rabbit hole?" },
-  { id: "11", time: 27, username: "MovieCritic",      userColor: "#E91E63", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=MovieCritic",      text: "10/10 story told in under 15 minutes" },
-  { id: "12", time: 31, username: "AnimeFan",         userColor: "#FF9800", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=AnimeFan",         text: "This hits different every single time" },
-  { id: "13", time: 35, username: "DesignGuru",       userColor: "#00BCD4", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=DesignGuru",       text: "The color grading in this scene is masterful 🎨" },
-  { id: "14", time: 39, username: "MusicLover",       userColor: "#8BC34A", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=MusicLover",       text: "Jan Morgenstern's score is absolutely incredible" },
-  { id: "15", time: 43, username: "CasualViewer",     userColor: "#FF5722", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=CasualViewer",     text: "I don't usually comment but WOW 😭" },
-  { id: "16", time: 47, username: "3DModeler",        userColor: "#607D8B", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=3DModeler",        text: "As a Blender user, the cloth sim here is insane" },
-  { id: "17", time: 51, username: "PhilosophyBro",   userColor: "#9C27B0", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=PhilosophyBro",    text: "The themes of loss and revenge hit so deep" },
-  { id: "18", time: 55, username: "FirstTimer",       userColor: "#4CAF50", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=FirstTimer",       text: "First watch ever — this is absolutely beautiful 🥺" },
-  { id: "19", time: 58, username: "NostalgiaBro",     userColor: "#FF6B9D", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=NostalgiaBro",     text: "Been watching this since 2010, still perfect" },
-  { id: "20", time: 62, username: "VFXStudent",       userColor: "#FFD700", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=VFXStudent",       text: "Studying this frame-by-frame for my uni project" },
-];
-
 // ─── Narrator script ──────────────────────────────────────────────────────────
 const NARRATOR_LINES = [
   { start:  0, end:  5, text: "Gathered within a small social cluster, several members of the troop engage in routine interaction while a dominant male focuses on replenishing his energy reserves." },
@@ -46,6 +22,20 @@ const NARRATOR_LINES = [
   { start: 40, end: 44, text: "As the encounter draws to a close, the group gradually settles into a more balanced state, demonstrating the resilience of highly social primates." },
 ];
 
+// ─── Fallback comment data ────────────────────────────────────────────────────
+const MOCK_COMMENTS_JSON = [
+  { id: "1",  time: 2,  username: "Steve101",  userColor: "#FF6B6B", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Steve101",  text: "STOP 😂" },
+  { id: "2",  time: 6,  username: "DebraV",    userColor: "#4ECDC4", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=DebraV",    text: "Just STOP 👀" },
+  { id: "3",  time: 10, username: "TomB",      userColor: "#FFD166", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=TomB",      text: "We saw it! 😂" },
+  { id: "4",  time: 15, username: "SarahJ",    userColor: "#06D6A0", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=SarahJ",    text: "Nice try 😬" },
+  { id: "5",  time: 20, username: "JeffM",     userColor: "#118AB2", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=JeffM",     text: "Nope 🔥" },
+  { id: "6",  time: 25, username: "LindaB",    userColor: "#EF476F", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=LindaB",    text: "Still eating 😂" },
+  { id: "7",  time: 30, username: "MikeFromOhio", userColor: "#F8961E", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=MikeFromOhio", text: "That's not what happened 🔥" },
+  { id: "8",  time: 35, username: "Carol77",   userColor: "#90BE6D", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carol77",   text: "Nobody buying that 😂" },
+  { id: "9",  time: 40, username: "Mark1972",  userColor: "#43AA8B", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mark1972",  text: "BIG PROBLEM 🤨" },
+  { id: "10", time: 43, username: "JennyL",    userColor: "#577590", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=JennyL",    text: "Be serious 😳" },
+];
+
 const formatTime = (seconds) => {
   if (!seconds || isNaN(seconds)) return "0:00";
   const m = Math.floor(seconds / 60);
@@ -53,15 +43,40 @@ const formatTime = (seconds) => {
   return `${m}:${s.toString().padStart(2, "0")}`;
 };
 
+// ─── TTS helper ───────────────────────────────────────────────────────────────
+let ttsVoice = null;
+
+function loadTTSVoice() {
+  if (ttsVoice) return;
+  const voices = window.speechSynthesis?.getVoices() ?? [];
+  ttsVoice =
+    voices.find((v) => v.lang === "en-GB" && /male|daniel|oliver|george/i.test(v.name)) ||
+    voices.find((v) => v.lang === "en-GB") ||
+    voices.find((v) => v.lang.startsWith("en"));
+}
+
+function speakLine(text) {
+  if (!("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  loadTTSVoice();
+  const u = new SpeechSynthesisUtterance(text);
+  if (ttsVoice) u.voice = ttsVoice;
+  u.rate   = 0.82;
+  u.pitch  = 0.72;
+  u.volume = 1.0;
+  window.speechSynthesis.speak(u);
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 export default function App() {
-  const videoRef     = useRef(null);
-  const chatRef      = useRef(null);
-  const hideTimer    = useRef(null);
+  const videoRef  = useRef(null);
+  const chatRef   = useRef(null);
+  const hideTimer = useRef(null);
 
   const [allComments,     setAllComments]     = useState([]);
   const [visibleComments, setVisibleComments] = useState([]);
   const [isPlaying,       setIsPlaying]       = useState(false);
-  const [isMuted,         setIsMuted]         = useState(false);
+  const [isMuted,         setIsMuted]         = useState(true);   // video starts muted
   const [currentTime,     setCurrentTime]     = useState(0);
   const [duration,        setDuration]        = useState(0);
   const [showChat,        setShowChat]        = useState(true);
@@ -72,6 +87,26 @@ export default function App() {
     (l) => currentTime >= l.start && currentTime < l.end
   ) ?? null;
 
+  // Pre-load TTS voices as soon as they're available
+  useEffect(() => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = loadTTSVoice;
+      loadTTSVoice();
+    }
+    return () => { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); };
+  }, []);
+
+  // Speak narrator line when it changes (and video is playing)
+  useEffect(() => {
+    if (!("speechSynthesis" in window)) return;
+    if (!isPlaying || !narratorLine) {
+      window.speechSynthesis.cancel();
+      return;
+    }
+    speakLine(narratorLine.text);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [narratorLine?.start, isPlaying]);
+
   // Fetch comments; fall back to mock on any error
   useEffect(() => {
     fetch("/comments.json")
@@ -80,7 +115,7 @@ export default function App() {
       .catch(() => setAllComments(MOCK_COMMENTS_JSON));
   }, []);
 
-  // Recompute visible comments whenever time or comment list changes
+  // Filter to comments whose timestamp has passed
   useEffect(() => {
     setVisibleComments(
       [...allComments]
@@ -118,6 +153,7 @@ export default function App() {
 
   const handleSeek = (e) => {
     if (!videoRef.current) return;
+    window.speechSynthesis?.cancel();
     videoRef.current.currentTime = Number(e.target.value);
   };
 
@@ -139,6 +175,9 @@ export default function App() {
     setUserInput("");
   };
 
+  // Show only the most recent comments so the rising effect stays clean
+  const recentComments = visibleComments.slice(-8);
+
   return (
     <>
       <style>{`
@@ -155,6 +194,12 @@ export default function App() {
         .seek-bar:hover::-webkit-slider-thumb { transform: scale(1.35); }
         .seek-bar::-moz-range-track { height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; }
         .seek-bar::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #818cf8; border: none; }
+
+        @keyframes riseUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .comment-rise { animation: riseUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
       `}</style>
 
       <div className="min-h-screen bg-slate-950 flex flex-col items-center py-8 px-4">
@@ -179,15 +224,17 @@ export default function App() {
             onMouseLeave={() => isPlaying && setShowControls(false)}
             onClick={togglePlayPause}
           >
+            {/* Video — muted by default, volume controlled separately from mute toggle */}
             <video
               ref={videoRef}
               src="/monkey.mp4"
               crossOrigin="anonymous"
+              muted
               className="w-full h-full object-contain"
               onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime ?? 0)}
               onLoadedMetadata={() => setDuration(videoRef.current?.duration ?? 0)}
               onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
+              onPause={() => { setIsPlaying(false); window.speechSynthesis?.cancel(); }}
             />
 
             {/* Central play icon while paused */}
@@ -198,6 +245,16 @@ export default function App() {
                 </div>
               </div>
             )}
+
+            {/* ── Unified gradient overlay — covers bottom 60%, blended not cropped ── */}
+            <div
+              className="absolute bottom-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: "60%",
+                background:
+                  "linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.70) 36%, rgba(0,0,0,0.40) 55%, rgba(0,0,0,0.12) 72%, transparent 100%)",
+              }}
+            />
 
             {/* Narrator subtitle */}
             {narratorLine && (
@@ -215,28 +272,30 @@ export default function App() {
               </div>
             )}
 
-            {/* Live chat overlay — bottom third */}
+            {/* Live chat — rises from bottom */}
             {showChat && (
-              <div className="absolute bottom-14 left-0 right-0 h-[38%] flex flex-col justify-end pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              <div
+                className="absolute left-0 right-0 px-4 pb-[3.5rem] pointer-events-none"
+                style={{ bottom: 0 }}
+              >
                 <div
                   ref={chatRef}
-                  className="relative z-10 overflow-y-auto no-scrollbar px-4 pb-3 space-y-1.5"
+                  className="overflow-y-auto no-scrollbar space-y-1.5 max-h-[28%]"
                   style={{ pointerEvents: "auto" }}
                 >
-                  {visibleComments.length === 0 && (
+                  {recentComments.length === 0 && isPlaying && (
                     <p className="text-slate-500 text-xs italic">
                       Chat appears as the video plays…
                     </p>
                   )}
-                  {visibleComments.map((c) => (
-                    <div key={c.id} className="flex items-start gap-2">
+                  {recentComments.map((c) => (
+                    <div key={c.id} className="comment-rise flex items-start gap-2">
                       <img
                         src={c.avatar}
                         alt={c.username}
                         className="w-6 h-6 rounded-full flex-shrink-0 mt-0.5 bg-slate-700"
                       />
-                      <p className="text-xs leading-snug">
+                      <p className="text-xs leading-snug drop-shadow-md">
                         <span className="text-slate-400 mr-1">[{formatTime(c.time)}]</span>
                         <span className="font-semibold mr-1" style={{ color: c.userColor }}>
                           {c.username}{c.isUser ? " (You)" : ""}:
@@ -251,7 +310,7 @@ export default function App() {
 
             {/* Custom control bar */}
             <div
-              className={`absolute bottom-0 left-0 right-0 px-4 pb-3 pt-8 bg-gradient-to-t from-black/95 to-transparent transition-opacity duration-300 ${
+              className={`absolute bottom-0 left-0 right-0 px-4 pb-3 pt-4 transition-opacity duration-300 ${
                 showControls || !isPlaying ? "opacity-100" : "opacity-0"
               }`}
               onClick={(e) => e.stopPropagation()}
