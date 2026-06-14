@@ -43,15 +43,6 @@ function loadVoice() {
     voices.find((v) => v.lang === "en-GB") ||
     voices.find((v) => v.lang.startsWith("en"));
 }
-function speakLine(text) {
-  if (!("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  loadVoice();
-  const u = new SpeechSynthesisUtterance(text);
-  if (ttsVoice) u.voice = ttsVoice;
-  u.rate = 0.82; u.pitch = 0.72; u.volume = 1;
-  window.speechSynthesis.speak(u);
-}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function App() {
@@ -71,6 +62,9 @@ export default function App() {
 
   const narratorLine = NARRATOR_LINES.find((l) => currentTime >= l.start && currentTime < l.end) ?? null;
 
+  // Track which segments have already been queued so we never double-speak
+  const spokenSegments = useRef(new Set());
+
   useEffect(() => {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.onvoiceschanged = loadVoice;
@@ -79,12 +73,27 @@ export default function App() {
     return () => window.speechSynthesis?.cancel();
   }, []);
 
+  // Queue narrator lines without cancelling the current one — each line speaks
+  // to full completion. Only pause/seek interrupts speech.
   useEffect(() => {
     if (!("speechSynthesis" in window)) return;
-    if (!isPlaying || !narratorLine) { window.speechSynthesis.cancel(); return; }
-    speakLine(narratorLine.text);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [narratorLine?.start, isPlaying]);
+    if (!isPlaying || !narratorLine) return;
+    if (spokenSegments.current.has(narratorLine.start)) return;
+    spokenSegments.current.add(narratorLine.start);
+    loadVoice();
+    const u = new SpeechSynthesisUtterance(narratorLine.text);
+    if (ttsVoice) u.voice = ttsVoice;
+    u.rate = 0.9; u.pitch = 0.72; u.volume = 1;
+    window.speechSynthesis.speak(u); // queues after any in-progress utterance
+  }, [narratorLine, isPlaying]);
+
+  // Cancel all speech on pause; clear set so segments re-speak on resume
+  useEffect(() => {
+    if (!isPlaying) {
+      window.speechSynthesis?.cancel();
+      spokenSegments.current.clear();
+    }
+  }, [isPlaying]);
 
   useEffect(() => {
     fetch("/comments.json")
@@ -122,7 +131,9 @@ export default function App() {
   const handleSeek = (e) => {
     e.stopPropagation();
     if (!videoRef.current) return;
+    // Cancel speech and reset so lines re-speak from the new position
     window.speechSynthesis?.cancel();
+    spokenSegments.current.clear();
     videoRef.current.currentTime = Number(e.target.value);
   };
   const handleSubmit = (e) => {
@@ -168,11 +179,7 @@ export default function App() {
         }
         .comment-rise { animation: riseUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to   { opacity: 1; }
-        }
-        .narrator-fade { animation: fadeIn 0.5s ease both; }
+
       `}</style>
 
       <div className="min-h-screen bg-black flex items-start justify-center">
@@ -206,26 +213,6 @@ export default function App() {
                 <div className="bg-black/40 backdrop-blur-sm rounded-full p-5">
                   <Play className="w-10 h-10 text-white fill-white" />
                 </div>
-              </div>
-            )}
-
-            {/* Narrator text — upper-centre of frame */}
-            {narratorLine && (
-              <div
-                key={narratorLine.start}
-                className="narrator-fade absolute inset-x-0 flex justify-center px-8 pointer-events-none"
-                style={{ top: "36%" }}
-              >
-                <p
-                  className="text-white text-center leading-snug text-lg font-semibold max-w-xs"
-                  style={{
-                    fontFamily: "'Georgia', serif",
-                    fontStyle: "italic",
-                    textShadow: "0 2px 12px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.9)",
-                  }}
-                >
-                  {narratorLine.text}
-                </p>
               </div>
             )}
 
